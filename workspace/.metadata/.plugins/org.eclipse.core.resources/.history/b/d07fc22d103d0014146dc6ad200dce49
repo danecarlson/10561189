@@ -1,0 +1,28 @@
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
+
+public class Search{
+public static void main (String [] Args) throws IOException{
+
+	List<String> words;
+	
+	System.out.println("Where is the file?");
+	Scanner reader = new Scanner(System.in);
+	String path = "/Users/danecarlson/Desktop/wordSearch.txt";//reader.nextLine();
+	Input input = new Input(path);
+	words = input.pullWords();
+	System.out.println("We will search for the following words: ");
+	for(String word : words){
+		System.out.println(word);
+	}
+	
+
+	reader.close();
+
+
+
+	}
+}
+

@@ -1,0 +1,14 @@
+AbstractTextEditor.Color.Background=162,75,14
+AbstractTextEditor.Color.Background.SystemDefault=false
+AbstractTextEditor.Color.Foreground=97,53,28
+AbstractTextEditor.Color.Foreground.SystemDefault=false
+AbstractTextEditor.Color.SelectionBackground=253,236,254
+AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
+currentLine=false
+eclipse.preferences.version=1
+hyperlinkColor=35,170,47
+hyperlinkColor.SystemDefault=false
+linked.focus.color=24,33,66
+overviewRuler_migration=migrated_3.1
+spacesForTabs=true
+spellingEnabled=false

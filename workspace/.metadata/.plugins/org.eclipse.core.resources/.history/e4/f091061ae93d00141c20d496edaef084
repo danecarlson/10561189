@@ -1,0 +1,34 @@
+
+
+
+public class Possibles {
+	int x, y;
+	String word;
+	Input.Direction dir;
+	
+	public Possibles(){
+		x = 0;
+		System.out.println("This is being hit this many times");
+		y = 0;
+		word = "";
+		dir = null;
+	}
+	
+	public Possibles(String wordp, int xp, int yp){
+		x = xp;
+		y = yp;
+		word = wordp;
+		dir = null;
+	}
+	
+	public void setDirection(Input.Direction dirp){
+		
+		dir = dirp;	
+		
+	}
+	
+	public String getWord(){
+		return word;
+	}
+
+}

@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Search{
+public static void main (String [] Args){
+
+	Scanner reader = new Scanner(System.in);
+	System.out.println("Where is the .txt file?");
+	Input input = new Input(reader.nextLine());
+	
+
+
+
+
+	}
+}
+

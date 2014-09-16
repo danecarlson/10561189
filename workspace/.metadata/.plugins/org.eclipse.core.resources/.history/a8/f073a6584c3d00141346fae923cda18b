@@ -1,0 +1,157 @@
+import java.util.LinkedList;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Input
+{
+	String path;
+	BufferedReader file;
+	String line;
+	int size;
+	char [][] puzzle;
+	List<String> words;
+	public enum Direction {UP,DOWN,UPLEFT,UPRIGHT,LEFT,RIGHT,DOWNLEFT,DOWNRIGHT, NONE}
+	
+	
+	public Input(String input){
+			path = input;
+			try{
+				file = new BufferedReader(new FileReader(input));
+				line = file.readLine();
+				size = 0;
+				pullPuzzle();
+				words = pullWords();
+				
+				
+				char [] param = {'A','L','L','I','G','A','T','O','R'}; 
+				findPath( param, 0,9);
+			}
+			catch(IOException e)
+			{
+				System.out.println("bad path");
+			}
+		
+		}
+	
+	public void findPath(char[] letters, int x, int y){
+	
+		char nextL = letters[1];
+		Direction dir = Direction.NONE;
+		
+		//for(int i = 0; i < 1; i++){//for every letter in the word, do this:
+			
+			
+			for(int b = y-1; b < letters.length; b++){
+				for(int a = x-1; a < letters.length; a++){//left to right, b is down another row
+					
+					if(b >= 0 && a >= 0 && a < size && b < size){//if appropriate
+					
+						if(puzzle[a][b] == nextL && (a != x) && (b != y)){
+							int xdif = a-x;
+							int ydif = b-y;
+							switch(xdif){
+								case -1://left
+									switch(ydif){
+									case -1://moved up
+										dir = Direction.UPLEFT;
+										break;
+									case 0://neither up nor down
+										dir = Direction.LEFT;
+										break;
+									case 1://moved down
+										dir = Direction.DOWNLEFT;
+										break;
+									}
+								break;
+								
+								
+								case 0://neither left nor right
+									switch(ydif){
+									case -1://moved up
+										dir = Direction.UP;
+										break;
+									case 0://neither up nor down
+										dir = Direction.NONE;
+										break;
+									case 1://moved down
+										dir = Direction.DOWN;
+										break;
+									}
+								break;
+								
+								
+								case 1://right
+									switch(ydif){
+									case -1://moved up
+										dir = Direction.UPRIGHT;
+										break;
+									case 0://neither up nor down
+										dir = Direction.RIGHT;
+										break;
+									case 1://moved down
+										dir = Direction.DOWNRIGHT;
+										break;
+									}
+								break;
+							}
+
+							System.out.println("found " + nextL + " at " + xdif + ", " + ydif);
+							System.out.println("It was " + dir);
+							
+						}
+						
+					//}
+				
+				}
+			}
+		}
+	
+	
+	}
+
+	public void pullPuzzle() throws IOException
+	{	
+		
+		line = line.toUpperCase();
+		char [] nextChar = line.toCharArray();
+		size = nextChar.length;
+		puzzle = new char [size][size];
+		
+		for(int b = 0; b < size; b++)
+		{
+			for(int a = 0; a < size; a++)
+			{
+				puzzle[a][b] = nextChar[a];
+				System.out.print(puzzle[a][b]);
+			}
+			line = file.readLine();
+			line = line.toUpperCase();
+			nextChar = line.toCharArray();
+			System.out.println("");
+		}
+	}
+	
+	
+	public List<String> pullWords() throws IOException{
+		List<String> toReturn = new LinkedList<String>(); 
+		line = file.readLine();
+		while(line.isEmpty()){
+			line = file.readLine();
+		}
+
+		while(line != null && !(line.isEmpty())){
+			toReturn.add(line);
+			line = file.readLine();
+		}
+		return toReturn;
+	}
+	
+	
+
+
+
+
+
+}

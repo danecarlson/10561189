@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Search{
+public static void main (String [] Args){
+
+	System.out.println("Hi Anothy! how old are you?");
+	Scanner reader = new Scanner(System.in);
+	System.out.println("Where is the .txt file?");
+	String path = reader.nextLine();
+	Input input = new Input(path);
+	
+
+
+
+
+	}
+}
+
